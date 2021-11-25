@@ -7,7 +7,7 @@ var linage = 38; // 表示する行数
 var $con = $('.con');
 var conElm = $con.get(0);
 
-var word = 'MATRIX_CODE';
+var word = 'MATRIX_RESURRECTIONS';
 var wordY = 18 + size + tail; // wordの縦位置
 var wordX = 17; // wordの開始位置
 var posIntv = 3; // wordの文字間隔
