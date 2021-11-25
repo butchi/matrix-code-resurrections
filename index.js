@@ -81,6 +81,7 @@ const loop = _ => {
             if(y === wordY && posArr.indexOf(x) > -1) {
                 elm.style['color'] = '#0f0';
                 elm.style['transform'] = 'scaleX(1)';
+                elm.style['text-shadow'] = '0 0 1px #00ff00';
             }
         }
     }
