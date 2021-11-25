@@ -12,21 +12,19 @@ const wordX = 17; // wordの開始位置
 const posIntv = 3; // wordの文字間隔
 const posArr = []; // wordの文字の横位置配列
 
+const kanaStr = 'ﾋﾌﾐﾖｲﾏﾜﾘﾃﾒｸﾙﾑﾅﾔｺﾄｱｳﾉｽﾍｼﾚｶﾀﾁｻｷｿﾗﾆﾓﾛｹｾﾕｪﾇｵｦﾊｴﾂｨﾈﾎﾝ';
+
 /** 整数ビット逆転 */
 const bitRev = (n, bit) => {
     const zeros = (new Array(bit+1)).join('0');
     return parseInt((zeros+n.toString(2)).slice(-zeros.length).split('').reverse().join(''),2);
 }
 
-/** ランダムな半角カタカナを返す */
-const randomKana = _ => {
-    return String.fromCharCode(65393+~~(44*Math.random()))
-}
-
 for(let i=0; i<word.length; i++) {
     posArr.push(wordX + posIntv*i);
 }
 
+let idx = 0;
 for(let y=0; y<size*2+tail; y++) {
     const row = document.createElement('div');
     row.setAttribute('class', 'row');
@@ -34,8 +32,9 @@ for(let y=0; y<size*2+tail; y++) {
         row.style['display'] = 'none';
     }
     for(let x=0; x<size; x++) {
+        idx++;
         const cell = document.createElement('span');
-        cell.innerHTML = randomKana();
+        cell.innerText = kanaStr[idx % kanaStr.length];
         row.appendChild(cell);
     }
     conElm.appendChild(row);
