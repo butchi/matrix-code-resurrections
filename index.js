@@ -77,8 +77,10 @@ const loop = _ => {
             }
             elm = elm.span[x];
             elm.style['color'] = colorLi[d];
+            elm.style['transform'] = 'scaleX(-1)';
             if(y === wordY && posArr.indexOf(x) > -1) {
                 elm.style['color'] = '#0f0';
+                elm.style['transform'] = 'scaleX(1)';
             }
         }
     }
