@@ -1,6 +1,6 @@
 'use strict';
 
-var size = 64; // 横幅
+var size = 128; // 横幅
 var tail = 6; // 尾の長さ
 var linage = 38; // 表示する行数
 
@@ -57,7 +57,7 @@ function loop() {
         for(x=0; x<size; x++) {
             var d;
             for(d=0; d<tail; d++) {
-                var y = bitRev(x, 6)+cnt+d;
+                var y = bitRev(x, 7)+cnt+d;
                 var $elm = $rows[y];
                 if(!$elm) {
                     break;
@@ -69,7 +69,7 @@ function loop() {
                 }
             }
         }
-        cnt++;
+
         if(cnt < size+linage+tail) {
             setTimeout(function() {
                 cnt++;
