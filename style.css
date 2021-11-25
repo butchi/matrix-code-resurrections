@@ -18,27 +18,3 @@ body {
     display: inline-block;
     width: 7px;
 }
-
-.con .val-0 {
-    color: #000;
-}
-
-.con .val-1 {
-    color: #020;
-}
-
-.con .val-2 {
-    color: #040;
-}
-
-.con .val-3 {
-    color: #060;
-}
-
-.con .val-4 {
-    color: #090;
-}
-
-.con .val-5 {
-    color: #0f0;
-}

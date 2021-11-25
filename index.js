@@ -4,6 +4,15 @@ const size = 128; // 横幅
 const tail = 6; // 尾の長さ
 const linage = 38; // 表示する行数
 
+const colorLi = {
+    0: '#000000',
+    1: '#001100',
+    2: '#003300',
+    3: '#006600',
+    4: '#009900',
+    5: '#00ff00',
+}
+
 const conElm = document.querySelector('.con');
 
 const word = 'MATRIX_RESURRECTIONS';
@@ -67,9 +76,9 @@ const loop = _ => {
                 break;
             }
             elm = elm.span[x];
-            elm.setAttribute('class', 'val-'+d);
+            elm.style['color'] = colorLi[d];
             if(y === wordY && posArr.indexOf(x) > -1) {
-                elm.style.color = '#0f0';
+                elm.style['color'] = '#0f0';
             }
         }
     }
