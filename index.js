@@ -4,8 +4,7 @@ const size = 128; // 横幅
 const tail = 6; // 尾の長さ
 const linage = 38; // 表示する行数
 
-const $con = $('.con');
-const conElm = $con.get(0);
+const conElm = document.querySelector('.con');
 
 const word = 'MATRIX_RESURRECTIONS';
 const wordY = 18 + size + tail; // wordの縦位置
@@ -42,45 +41,45 @@ for(let y=0; y<size*2+tail; y++) {
     conElm.appendChild(row);
 }
 
+// "MATRIX_RESURRECTIONS" の埋め込み
 for(let i=0; i<posArr.length; i++) {
-    $con.find('.row').eq(wordY).find('span').eq(posArr[i]).text(word[i]);
+    const rowElm = [...conElm.querySelectorAll('.row')][wordY];
+    const colElm = [...rowElm.querySelectorAll('span')][posArr[i]];
+    colElm.innerText = word[i];
 }
 
 let cnt = 0;
-const $rows = $con.find('.row');
-for (let r = 0, len = $rows.length; r < len; ++r) {
-    const $row = $rows.eq(r);
-    const $spans = $row.children();
-    const elem = $row.get(0);
-    elem.span = [];
+const rowElmArr = [...conElm.querySelectorAll('.row')];
+for (let r = 0, len = rowElmArr.length; r < len; ++r) {
+    const rowElm = rowElmArr[r];
+    const spanElmArr = [...rowElm.querySelectorAll('span')];
+    rowElm.span = [];
     for (let k = 0; k < size; ++k) {
-        elem.span.push($spans.eq(k));
+        rowElm.span.push(spanElmArr[k]);
     }
 }
 
 const loop = _ => {
-    setTimeout(function() {
-        for(let x=0; x<size; x++) {
-            for(let d=0; d<tail; d++) {
-                const y = bitRev(x, 7)+cnt+d;
-                let $elm = $rows[y];
-                if(!$elm) {
-                    break;
-                }
-                $elm = $elm.span[x];
-                $elm.attr('class', 'val-'+d);
-                if(y === wordY && posArr.indexOf(x) > -1) {
-                    $elm.css('color', '#0f0');
-                }
+    for(let x=0; x<size; x++) {
+        for(let d=0; d<tail; d++) {
+            const y = bitRev(x, 7)+cnt+d;
+            let elm = rowElmArr[y];
+            if(!elm) {
+                break;
+            }
+            elm = elm.span[x];
+            elm.setAttribute('class', 'val-'+d);
+            if(y === wordY && posArr.indexOf(x) > -1) {
+                elm.style.color = '#0f0';
             }
         }
+    }
 
-        if(cnt < size+linage+tail) {
-            setTimeout(function() {
-                cnt++;
-                loop();
-            }, 50);
-        }
-    }, 10);
+    if(cnt < size+linage+tail) {
+        setTimeout(function() {
+            cnt++;
+            loop();
+        }, 50);
+    }
 }
 loop();
