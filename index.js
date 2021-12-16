@@ -16,10 +16,10 @@ const matrixCode = word => {
 
     const conElm = document.querySelector('.con');
 
-    const wordY = 18 + size + tail; // wordの縦位置
-    const wordX = 17; // wordの開始位置
     const posIntv = 3; // wordの文字間隔
     const posArr = []; // wordの文字の横位置配列
+    const wordY = 18 + size + tail; // wordの縦位置
+    const wordX = Math.floor(size / 2 - (word.length * posIntv) / 2); // wordの開始位置
 
     const kanaStr = 'ﾋﾌﾐﾖｲﾏﾜﾘﾃﾒｸﾙﾑﾅﾔｺﾄｱｳﾉｽﾍｼﾚｶﾀﾁｻｷｿﾗﾆﾓﾛｹｾﾕｪﾇｵｦﾊｴﾂｨﾈﾎﾝ';
 
