@@ -76,36 +76,39 @@ const matrixCode = (word, isVirgin = false) => {
         return;
     }
 
+    const timestamp = new Date();
+
     const loop = _ => {
-        for (let x = 0; x < size; x++) {
-            for (let d = 0; d < tail; d++) {
-                const y = bitRev(x, 7) + cnt + d;
-                let elm = rowElmArr[y];
-                if (!elm) {
-                    break;
-                }
-                elm = elm.span[x];
-                elm.style['color'] = colorLi[d];
-                elm.style['transform'] = 'scaleX(-1)';
-                if (y === wordY && posArr.indexOf(x) > -1) {
-                    elm.style['color'] = '#0f0';
-                    elm.style['transform'] = 'scaleX(1)';
-                    elm.style['text-shadow'] = '0 0 1px #00ff00';
+        const t = new Date();
+
+        const curCnt = Math.floor((t.valueOf() - timestamp.valueOf()) / 52);
+
+        for (cnt; cnt < curCnt; cnt++) {
+            for (let x = 0; x < size; x++) {
+                for (let d = 0; d < tail; d++) {
+                    const y = bitRev(x, 7) + cnt + d;
+                    let elm = rowElmArr[y];
+                    if (!elm) {
+                        break;
+                    }
+                    elm = elm.span[x];
+                    elm.style['color'] = colorLi[d];
+                    elm.style['transform'] = 'scaleX(-1)';
+                    if (y === wordY && posArr.indexOf(x) > -1) {
+                        elm.style['color'] = '#0f0';
+                        elm.style['transform'] = 'scaleX(1)';
+                        elm.style['text-shadow'] = '0 0 1px #00ff00';
+                    }
                 }
             }
         }
 
         if (cnt < size + linage + tail) {
-            timer = setTimeout(function () {
-                cnt++;
-                loop();
-            }, 50);
+            requestAnimationFrame(loop);
         }
     }
     loop();
 }
-
-let timer;
 
 const startHandler = evt => {
     document.onkeydown = null;
