@@ -118,44 +118,36 @@ const startHandler = evt => {
     document.querySelector('audio').play()
 
     setTimeout(_ => {
-        clearTimeout(timer);
         matrixCode('MATRIX_RESURRECTIONS');
     }, 0);
 
     setTimeout(_ => {
-        clearTimeout(timer);
-        matrixCode('WHO ARE YOU ?');
-    }, 16540);
+        matrixCode('DO YOU FOLLOW THE WHITE RABBIT');
+    }, 16590);
 
     setTimeout(_ => {
-        clearTimeout(timer);
-        matrixCode('YOU HAVE RESURRECTED ?');
-    }, 16540 * 2);
+        matrixCode('CAN YOU STAY WONDERLAND');
+    }, 17000 * 2);
 
     setTimeout(_ => {
-        clearTimeout(timer);
-        matrixCode('BORN AGAIN ?');
-    }, 16560 * 3);
+        matrixCode('HAVE YOU DREAMED DREAM');
+    }, 17000 * 3);
 
     setTimeout(_ => {
-        clearTimeout(timer);
-        matrixCode('WHERE IS THE WORLD ?');
-    }, 16560 * 4);
+        matrixCode('IS GONE DREAM FROM YOU');
+    }, 17000 * 4);
 
     setTimeout(_ => {
-        clearTimeout(timer);
-        matrixCode('WHO CAN I ENCOUNTER ?');
-    }, 16560 * 5);
+        matrixCode('WHERE IS THE WORLD');
+    }, 17000 * 5);
 
     setTimeout(_ => {
-        clearTimeout(timer);
-        matrixCode('AM I ?');
-    }, 16560 * 6);
+        matrixCode('DO YOU HAVE RESURRECTED');
+    }, 17000 * 6);
 
     setTimeout(_ => {
-        clearTimeout(timer);
         matrixCode('MATRIX_RESURRECTIONS');
-    }, 16560 * 7);
+    }, 17000 * 7);
 }
 
 document.onkeydown = startHandler;
