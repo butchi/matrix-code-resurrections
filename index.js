@@ -1,6 +1,6 @@
 'use strict';
 
-const matrixCode = word => {
+const matrixCode = (word, isVirgin = false) => {
     const size = 128; // 横幅
     const tail = 6; // 尾の長さ
     const linage = 38; // 表示する行数
@@ -68,6 +68,14 @@ const matrixCode = word => {
         }
     }
 
+    if (isVirgin === true) {
+        posArr.forEach(x => {
+            rowElmArr[wordY].span[x].style['color'] = '#0f0';
+        });
+
+        return;
+    }
+
     const loop = _ => {
         for (let x = 0; x < size; x++) {
             for (let d = 0; d < tail; d++) {
@@ -100,57 +108,55 @@ const matrixCode = word => {
 let timer;
 
 const startHandler = evt => {
+    document.onkeydown = null;
+
+    document.onclick = null;
+
+    document.querySelector('audio').play()
+
     setTimeout(_ => {
-        document.onkeydown = null;
+        clearTimeout(timer);
+        matrixCode('MATRIX_RESURRECTIONS');
+    }, 0);
 
-        document.onclick = null;
+    setTimeout(_ => {
+        clearTimeout(timer);
+        matrixCode('WHO ARE YOU ?');
+    }, 16540);
 
-        setTimeout(_ => {
-            document.querySelector('audio').play()
+    setTimeout(_ => {
+        clearTimeout(timer);
+        matrixCode('YOU HAVE RESURRECTED ?');
+    }, 16540 * 2);
 
-            clearTimeout(timer);
-            matrixCode('MATRIX_RESURRECTIONS');
-        }, 0);
+    setTimeout(_ => {
+        clearTimeout(timer);
+        matrixCode('BORN AGAIN ?');
+    }, 16560 * 3);
 
-        setTimeout(_ => {
-            clearTimeout(timer);
-            matrixCode('WHO ARE YOU ?');
-        }, 16540);
+    setTimeout(_ => {
+        clearTimeout(timer);
+        matrixCode('WHERE IS THE WORLD ?');
+    }, 16560 * 4);
 
-        setTimeout(_ => {
-            clearTimeout(timer);
-            matrixCode('YOU HAVE RESURRECTED ?');
-        }, 16540 * 2);
+    setTimeout(_ => {
+        clearTimeout(timer);
+        matrixCode('WHO CAN I ENCOUNTER ?');
+    }, 16560 * 5);
 
-        setTimeout(_ => {
-            clearTimeout(timer);
-            matrixCode('BORN AGAIN ?');
-        }, 16560 * 3);
+    setTimeout(_ => {
+        clearTimeout(timer);
+        matrixCode('AM I ?');
+    }, 16560 * 6);
 
-        setTimeout(_ => {
-            clearTimeout(timer);
-            matrixCode('WHERE IS THE WORLD ?');
-        }, 16560 * 4);
-
-        setTimeout(_ => {
-            clearTimeout(timer);
-            matrixCode('WHO CAN I ENCOUNTER ?');
-        }, 16560 * 5);
-
-        setTimeout(_ => {
-            clearTimeout(timer);
-            matrixCode('AM I ?');
-        }, 16560 * 6);
-
-        setTimeout(_ => {
-            clearTimeout(timer);
-            matrixCode('MATRIX_RESURRECTIONS');
-        }, 16560 * 7);
-    }, 999)
+    setTimeout(_ => {
+        clearTimeout(timer);
+        matrixCode('MATRIX_RESURRECTIONS');
+    }, 16560 * 7);
 }
 
 document.onkeydown = startHandler;
 
 document.onclick = startHandler;
 
-matrixCode();
+matrixCode('ENTER', true);
